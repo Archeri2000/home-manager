@@ -1,0 +1,16 @@
+#cloud-config
+
+users:
+  - name: cheri
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin, docker
+    shell: /home/cheri/.nix-profile/bin/zsh
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDm6xw0WUum9jbkhQnU1TF5E+JhWSPh/XHBgIaHrfscnNeRMOW2FObu3uNjYMRtSa/0p/7b96E4kVwn55hyPbmgrMwt/tX0kWto0NAIcBzrxQLrI4OVFBE+MYEx8+yg09HnGOghE9k+i9zT/uE+NDRu7CZtowOuVXSRaQUjEJ9BOmXr3MdBRysomI6CjIlWZzfAyQ6JaQ72FEgumsfbU0v5pFEIUbw6Dx+0K9KAa0Qyd7mj3Rc917rYLOimQjIfU9BXSxxlKz2StGZjZmNoRkjzAe9Z44TTthjuXgwRTluHZN8zIhNzABqXqRxyUPShoG3dhIqVkdUgLTAsH27YVnt5qljvRmIt+uMyVuvqEcWO0v6WQcObZk3j9MjDE5Llx31hN3Io8BEHbMCaM2LEqd95VIo9QDiWupU6qtbHet5PsfFE3J6DFucIkJDmh5VWbhRLn4GoSff07iu33SHYy7uc2A1Xfo45phnxA2eDHveNsKaDdFQE2wPH+71rT+DtOZfFBzrXeJmnd14JUH6d/RaaCMgleRH0G7eXk7ookHi3q4X6wPVJ2LBRs2RcOX8N0nRGnIh9fFKeMGpTpUv4OrEdEShxrpQQG0abFkUmQxc3v4Fjg9cp5nDzQZrr995th9Vrx3c82ji4F5mI5pVaPE0h2IMF43PjZwRe2NEc8oGgcw== cheri@Cheri-Zephyrus-G15
+package_update: true
+
+runcmd:
+  - sudo -u cheri bash -c 'curl -L https://raw.githubusercontent.com/Archeri2000/home-manager/main/scripts/install-home-manager.sh | sh'
+  - echo "keep-derivations = true" >> /etc/nix/nix.conf
+  - echo "keep-outputs = true" >> /etc/nix/nix.conf
