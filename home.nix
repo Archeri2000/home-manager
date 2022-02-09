@@ -69,10 +69,10 @@ with pkgs;
       enable = true;
       userEmail = "ongyuhann@hotmail.com";
       userName = "Archeri2000";
-      # signing = {
-      #   key = "35E42CCF101D5C04";
-      #   signByDefault = true;
-      # };
+      signing = {
+        key = "0xC34E9A81E1664255";
+        signByDefault = true;
+      };
       lfs = {
         enable = true;
       };

@@ -11,11 +11,11 @@ pkgs.writeShellScriptBin "setup-keys" ''
 
   USAGE=$(
     cat <<-END
-      Set up the following keys:
-      (s) ssh-key (rsa 4096 bits)
-      (g) gpg-key (rsa 4096 bits)
-      (b) both ssh and gpg keys
-      Response: One of (s,g,b)
+          Set up the following keys:
+          (s) ssh-key (rsa 4096 bits)
+          (g) gpg-key (rsa 4096 bits)
+          (b) both ssh and gpg keys
+          Response: One of (s,g,b)
     END
   )
   echo "$USAGE"
@@ -92,14 +92,14 @@ pkgs.writeShellScriptBin "setup-keys" ''
     # make sure every line isnt blank TODO
     gpg_init=$(
       cat <<-EOF
-          %echo Generating GPG Key
-          Key-Type: RSA
-          Key-Length: 4096
-          Subkey-Type: RSA
-          Subkey-Length: 4096
-          Name-Real: $gpg_name
-          Name-Email: $gpg_email
-          Expire-Date: 0
+            %echo Generating GPG Key
+            Key-Type: RSA
+            Key-Length: 4096
+            Subkey-Type: RSA
+            Subkey-Length: 4096
+            Name-Real: $gpg_name
+            Name-Email: $gpg_email
+            Expire-Date: 0
       EOF
     )
     # Add Comment if appropriate
@@ -107,7 +107,7 @@ pkgs.writeShellScriptBin "setup-keys" ''
       gpg_init=$gpg_init$(
         cat <<-EOF
 
-            Name-Comment: $gpg_comment
+              Name-Comment: $gpg_comment
         EOF
       )
     fi
@@ -117,7 +117,7 @@ pkgs.writeShellScriptBin "setup-keys" ''
       gpg_init=$gpg_init$(
         cat <<-EOF
 
-            Passphrase: $gpg_pass
+              Passphrase: $gpg_pass
         EOF
       )
     fi
@@ -126,8 +126,8 @@ pkgs.writeShellScriptBin "setup-keys" ''
     gpg_init=$gpg_init$(
       cat <<-EOF
 
-          %commit
-          %echo done
+            %commit
+            %echo done
       EOF
     )
 
@@ -149,5 +149,6 @@ pkgs.writeShellScriptBin "setup-keys" ''
   fi
 
   echo "Script successfully completed."
+
 
 ''
