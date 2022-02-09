@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let setup-keys = import ./modules/setup-keys.nix { inherit pkgs; }; in
+let set-signing-key = import ./modules/set-signing-key.nix { inherit pkgs; }; in
 
 
 let customDir = pkgs.stdenv.mkDerivation {
@@ -45,6 +46,7 @@ with pkgs;
     yq-go
     uutils-coreutils
     setup-keys
+    set-signing-key
   ];
 
   services = {
