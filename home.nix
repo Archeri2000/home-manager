@@ -73,6 +73,8 @@ with pkgs;
       userName = "Archeri2000";
       extraConfig = {
         init.defaultBranch = "main";
+        pull.rebase = false;
+        pull.ff = "only";
       };
       includes = [
         { path = "$HOME/.gitconfig"; }
