@@ -188,8 +188,8 @@ with pkgs;
         # for windows only
         open = "explorer.exe";
 
-        # devbox only (Need to add devbox IP to the /etc/hosts file as Cheri-Devbox)
-        devbox = "ssh cheri@Cheri-Devbox";
+        # devbox only (Need to add devbox IP to the /etc/hosts file as Devbox)
+        devbox = "ssh -i -A cheri@Devbox";
 
       };
       plugins = [
