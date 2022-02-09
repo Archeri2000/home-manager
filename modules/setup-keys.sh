@@ -9,7 +9,7 @@ USAGE=$(
 		        (ps) print ssh pub key
 		        (pg) print gpg pub key
 		        (p) print both keys
-		        Response: One of (s,g,b)
+		        Response: One of (s, g, b, ps, pg, p)
 	END
 )
 echo "$USAGE"

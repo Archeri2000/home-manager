@@ -69,10 +69,12 @@ with pkgs;
       enable = true;
       userEmail = "ongyuhann@hotmail.com";
       userName = "Archeri2000";
-      signing = {
-        key = "0xC34E9A81E1664255";
-        signByDefault = true;
+      extraConfig = {
+        init.defaultBranch = "main";
       };
+      includes = [
+        { path = "$HOME/.gitconfig"; }
+      ];
       lfs = {
         enable = true;
       };
