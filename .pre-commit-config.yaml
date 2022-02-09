@@ -10,6 +10,7 @@ repos:
     rev: 2.1.5
     hooks:
       - id: shellcheck
+        args: ["--severity=error"]
   - repo: local
     hooks:
       - id: shfmt
