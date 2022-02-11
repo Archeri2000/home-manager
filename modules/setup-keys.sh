@@ -138,7 +138,7 @@ fi
 
 if [ "$option" = "b" ] || [ "$option" = "g" ] || [ "$option" = "p" ] || [ "$option" = "pg" ]; then
 	echo "GPG Pub Key:"
-	$gpg -K --keyid-format long | $grep -B 3 -A 1 "$gpg_name" | $grep '\[SC\]' | $grep -v expired | $sed 's#sec \+[^/]\+/\([0-9A-F]\+\).*#\1#' | $gpg --armour --export
+	$gpg -K --keyid-format long | $grep -B 3 -A 1 "$gpg_name" | $grep '\[SCE\?A\?\]' | $grep -v expired | $sed 's#sec \+[^/]\+/\([0-9A-F]\+\).*#\1#' | $gpg --armour --export
 	echo "============================================================"
 fi
 
