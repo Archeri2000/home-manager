@@ -50,6 +50,7 @@ with pkgs;
     setup-keys
     set-signing-key
     setup-devbox-server
+    dos2unix
   ];
 
   services = {
