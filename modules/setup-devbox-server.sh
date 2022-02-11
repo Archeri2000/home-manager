@@ -29,9 +29,8 @@ stty echo
 gpg_name="$(git config --get user.name)"
 gpg_email="$(git config --get user.email)"
 
-printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n' "b" "$ssh_pass" "$ssh_pass" "$gpg_name" "$gpg_email" "Devbox Key" "$gpg_pass" "$gpg_pass" | setup-keys
+printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n' "b" "$ssh_pass" "$ssh_pass" "$gpg_name" "$gpg_email" "Devbox Key" "$gpg_pass" "$gpg_pass" | $setup_keys
 
-$setup_keys
 $set_signing_key
 # register-with-github
 # register-with-gitlab
