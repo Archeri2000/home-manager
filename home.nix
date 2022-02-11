@@ -2,6 +2,8 @@
 
 let setup-keys = import ./modules/setup-keys.nix { inherit pkgs; }; in
 let set-signing-key = import ./modules/set-signing-key.nix { inherit pkgs; }; in
+let setup-devbox-server = import ./modules/setup-devbox-server.nix { inherit pkgs; }; in
+
 
 
 let customDir = pkgs.stdenv.mkDerivation {
@@ -47,6 +49,7 @@ with pkgs;
     uutils-coreutils
     setup-keys
     set-signing-key
+    setup-devbox-server
   ];
 
   services = {
