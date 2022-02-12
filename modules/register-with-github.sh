@@ -30,7 +30,7 @@ curl \
 	https://api.github.com/user/keys \
 	-d "{\"key\":\"$ssh_key\", \"title\":\"$title\"}"
 
-gpg_key=$($gpg -K --keyid-format long | $grep -B 3 -A 1 "$gpg_name" | $grep '\[SCE\?A\?\]' | $grep -v expired | $sed 's#sec \+[^/]\+/\([0-9A-F]\+\).*#\1#' | $gpg --armour --export)
+gpg_key=$($git config --get user.signingkey | $gpg --armour --export)
 
 curl \
 	-X POST \

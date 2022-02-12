@@ -10,8 +10,7 @@ pkgs.writeShellScriptBin "register-with-github" ''
   PATH=$PATH:${pkgs.curl}/bin
 
   gpg=${pkgs.gnupg}/bin/gpg
-  grep=${pkgs.gnugrep}/bin/grep
-  sed=${pkgs.gnused}/bin/sed
+  git=${pkgs.git}/bin/git
 
   get_uuid=${get-uuid}/bin/get-uuid
 
