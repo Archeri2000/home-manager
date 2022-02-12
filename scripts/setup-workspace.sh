@@ -11,9 +11,3 @@ cd "$HOME/.config" && rm -rf nixpkgs && ln -s "$HOME/home-manager-config" nixpkg
 bash --login -c "home-manager switch"
 
 bash --login -c "tmux new -d 'while true; do sudo $(which dockerd); done'"
-
-# Setup SSH and GPG Keys
-bash --login -c "printf '%s\n\n\n%s\n%s\n%s\n%s\n%s\n' \"b\" \"$USER\" \"ongyuhann@hotmail.com\" \"Devbox Key\" \"$gpg_pass\" \"$gpg_pass\" | setup-keys"
-
-# Configure git signing key
-bash --login -c "set-signing-key"

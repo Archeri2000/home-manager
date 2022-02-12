@@ -11,6 +11,6 @@ users:
 package_update: true
 
 runcmd:
-  - sudo -u cheri gpg_pass=<password> bash -c 'curl -L https://raw.githubusercontent.com/Archeri2000/home-manager/main/scripts/setup-workspace.sh | sh'
+  - sudo -u cheri bash -c 'curl -L https://raw.githubusercontent.com/Archeri2000/home-manager/main/scripts/setup-workspace.sh | sh'
   - echo "keep-derivations = true" >> /etc/nix/nix.conf
   - echo "keep-outputs = true" >> /etc/nix/nix.conf
