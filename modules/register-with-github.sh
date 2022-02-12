@@ -1,25 +1,17 @@
 #!/bin/sh
 
 if [ "$1" = "" ]; then
-	key=$(cat "$HOME"/.ssh/id_rsa.pub)
+	ssh_key=$(cat "$HOME"/.ssh/id_rsa.pub)
 else
-	key=$(cat "$HOME"/ssh/"$1")
+	ssh_key=$(cat "$HOME"/ssh/"$1")
 fi
 
 # Get Github Username
-while true; do
-	echo "Github Username:"
-	read -r github_user
-	if [ "$github_user" != "" ]; then
-		break
-	else
-		echo "Empty Username!"
-	fi
-done
+github_user=$(git config --get user.name)
 
 stty -echo
 while true; do
-	echo "Personal Access Token (Please ensure permissions are given to modify SSH Keys)"
+	echo "Personal Access Token (Please ensure permissions are given to modify SSH Keys):"
 	read -r github_PAT
 	if [ "$github_PAT" != "" ]; then
 		break
@@ -36,4 +28,13 @@ curl \
 	-H "Accept: application/vnd.github.v3+json" \
 	-u "$github_user:$github_PAT" \
 	https://api.github.com/user/keys \
-	-d "{\"key\":\"$key\", \"title\":\"$title\"}"
+	-d "{\"key\":\"$ssh_key\", \"title\":\"$title\"}"
+
+gpg_key=$($gpg -K --keyid-format long | $grep -B 3 -A 1 "$gpg_name" | $grep '\[SCE\?A\?\]' | $grep -v expired | $sed 's#sec \+[^/]\+/\([0-9A-F]\+\).*#\1#' | $gpg --armour --export)
+
+curl \
+	-X POST \
+	-H "Accept: application/vnd.github.v3+json" \
+	-u "$github_user:$github_PAT" \
+	https://api.github.com/user/gpg_keys \
+	-d "{\"armored_public_key\":\"$gpg_key\"}"
