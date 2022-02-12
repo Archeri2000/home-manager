@@ -29,7 +29,7 @@ while true; do
 done
 stty echo
 
-title="$USER-Devbox-$get_uuid"
+title="$USER-Devbox-$($get_uuid)"
 
 curl \
 	-X POST \
