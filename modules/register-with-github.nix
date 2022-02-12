@@ -1,0 +1,15 @@
+{ pkgs ? import <nixpkgs> { } }:
+let script = builtins.readFile ./register-with-github.sh; in
+let get-uuid = import ./get-uuid.nix { inherit pkgs; }; in
+pkgs.writeShellScriptBin "register-with-github" ''
+  #!/bin/sh
+
+  # Add CoreUtils
+  PATH=$PATH:${pkgs.coreutils}/bin
+  # Add Curl
+  PATH=$PATH:${pkgs.curl}/bin
+
+  get_uuid=${get-uuid}/bin/get-uuid
+
+  ${script}
+''

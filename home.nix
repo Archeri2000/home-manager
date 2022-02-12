@@ -3,6 +3,8 @@
 let setup-keys = import ./modules/setup-keys.nix { inherit pkgs; }; in
 let set-signing-key = import ./modules/set-signing-key.nix { inherit pkgs; }; in
 let setup-devbox-server = import ./modules/setup-devbox-server.nix { inherit pkgs; }; in
+let get-uuid = import ./modules/get-uuid.nix { inherit pkgs; }; in
+let register-with-github = import ./modules/register-with-github.nix { inherit pkgs; }; in
 
 
 
@@ -47,10 +49,12 @@ with pkgs;
     jq
     yq-go
     uutils-coreutils
+    dos2unix
     setup-keys
     set-signing-key
     setup-devbox-server
-    dos2unix
+    get-uuid
+    register-with-github
   ];
 
   services = {
