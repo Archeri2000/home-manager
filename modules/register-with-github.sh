@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $1 = "" ]; then
+if [ "$1" = "" ]; then
 	key=$(cat "$HOME"/.ssh/id_rsa.pub)
 else
 	key=$(cat "$HOME"/ssh/"$1")
