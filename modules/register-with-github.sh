@@ -34,6 +34,6 @@ title="$USER-Devbox-$get_uuid"
 curl \
 	-X POST \
 	-H "Accept: application/vnd.github.v3+json" \
-	-u "$github_user:$github_PAT"
-https://api.github.com/user/keys \
+	-u "$github_user:$github_PAT" \
+	https://api.github.com/user/keys \
 	-d "{\"key\":\"$key\", \"title\":\"$title\"}"
