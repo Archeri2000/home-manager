@@ -9,6 +9,10 @@ pkgs.writeShellScriptBin "register-with-github" ''
   # Add Curl
   PATH=$PATH:${pkgs.curl}/bin
 
+  gpg=${pkgs.gnupg}/bin/gpg
+  grep=${pkgs.gnugrep}/bin/grep
+  sed=${pkgs.gnused}/bin/sed
+
   get_uuid=${get-uuid}/bin/get-uuid
 
   ${script}
