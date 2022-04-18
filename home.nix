@@ -77,7 +77,7 @@ with pkgs;
     };
     git = {
       enable = true;
-      userEmail = "ongyuhann@hotmail.com";
+      userEmail = "cheri.yuhann@outlook.com";
       userName = "Archeri2000";
       extraConfig = {
         init.defaultBranch = "main";
