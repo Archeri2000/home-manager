@@ -203,7 +203,7 @@ with pkgs;
         open = "explorer.exe";
 
         # devbox only (Need to add devbox IP to the /etc/hosts file as Devbox)
-        devbox = "ssh -i -A cheri@Devbox";
+        devbox = "ssh -A cheri@Devbox";
 
       };
       plugins = [
