@@ -59,10 +59,10 @@
     nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
     nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
     nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
-    # node_version          # node.js version
-    # go_version            # go version (https://golang.org)
+    node_version            # node.js version
+    go_version              # go version (https://golang.org)
     # rust_version          # rustc version (https://www.rust-lang.org)
-    # dotnet_version        # .NET version (https://dotnet.microsoft.com)
+    dotnet_version          # .NET version (https://dotnet.microsoft.com)
     # php_version           # php version (https://www.php.net/)
     # laravel_version       # laravel php framework version (https://laravel.com/)
     # java_version          # java version (https://www.java.com/)
@@ -184,7 +184,8 @@
   #################################[ os_icon: os identifier ]##################################
   # OS identifier color.
   typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=232
-  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=7
+  # CHERI: original colour 7
+  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=81
   # Custom icon.
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
@@ -213,19 +214,23 @@
 
   ##################################[ dir: current directory ]##################################
   # Current directory background color.
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND=4
+  # CHERI: original colour was 4
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=211
   # Default current directory foreground color.
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=254
+  # CHERI: original colour was 254
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=232
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
   # Replace removed segment suffixes with this symbol.
   typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
   # Color of the shortened directory segments.
-  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=250
+  # CHERI: original colour was 250
+  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=232
   # Color of the anchor directory segments. Anchor segments are never shortened. The first
   # segment is always an anchor.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=255
+  # CHERI: original colour was 255
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=232
   # Display anchor directory segments in bold.
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
   # Don't shorten directories that contain any of these files. They are anchors.
@@ -352,10 +357,15 @@
 
   #####################################[ vcs: git status ]######################################
   # Version control system colors.
-  typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=2
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=3
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=2
-  typeset -g POWERLEVEL9K_VCS_CONFLICTED_BACKGROUND=3
+  # CHERI: original colour 2
+  typeset -g POWERLEVEL9K_VCS_CLEAN_BACKGROUND=120
+  # CHERI: original colour 3
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=228
+  # CHERI: original colour 2
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=120
+  # CHERI: original colour 3
+  typeset -g POWERLEVEL9K_VCS_CONFLICTED_BACKGROUND=228
+  # CHERI: original colour 8
   typeset -g POWERLEVEL9K_VCS_LOADING_BACKGROUND=8
 
   # Branch icon. Set this parameter to '\uF126 ' for the popular Powerline branch icon.
@@ -388,7 +398,8 @@
     local      clean='%0F' # black foreground
     local   modified='%0F' # black foreground
     local  untracked='%0F' # black foreground
-    local conflicted='%1F' # red foreground
+    # CHERI: original color 1
+    local conflicted='%204F' # red foreground
 
     local res
 
@@ -505,41 +516,50 @@
   typeset -g POWERLEVEL9K_STATUS_OK=true
   typeset -g POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_EXPANSION='✔'
   typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=2
-  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=0
+  # CHERI: original colour 0
+  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=120
 
   # Status when some part of a pipe command fails but the overall exit status is zero. It may look
   # like this: 1|0.
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION='✔'
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=2
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=0
+  # CHERI: original colour 0
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=120
 
   # Status when it's just an error code (e.g., '1'). No need to show it if prompt_char is enabled as
   # it will signify error by turning red.
   typeset -g POWERLEVEL9K_STATUS_ERROR=true
   typeset -g POWERLEVEL9K_STATUS_ERROR_VISUAL_IDENTIFIER_EXPANSION='✘'
-  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=3
-  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=1
+  # CHERI: original colour 3
+  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=0
+  # CHERI: original colour 1
+  typeset -g POWERLEVEL9K_STATUS_ERROR_BACKGROUND=211
 
   # Status when the last command was terminated by a signal.
   typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
   # Use terse signal names: "INT" instead of "SIGINT(2)".
   typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=false
   typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION='✘'
-  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=3
-  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_BACKGROUND=1
+  # CHERI: original colour 3
+  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=0
+  # CHERI: original colour 1
+  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_BACKGROUND=211
 
   # Status when some part of a pipe command fails and the overall exit status is also non-zero.
   # It may look like this: 1|0.
   typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
   typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='✘'
-  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=3
-  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_BACKGROUND=1
+  # CHERI: original colour 3
+  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=0
+  # CHERI: original colour 1
+  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_BACKGROUND=211
 
   ###################[ command_execution_time: duration of the last command ]###################
   # Execution time color.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=0
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=3
+  # CHERI: original colour 3
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=79
   # Show duration of the last command if takes at least this many seconds.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
   # Show this many fractional digits. Zero means round to seconds.
@@ -554,7 +574,7 @@
   #######################[ background_jobs: presence of background jobs ]#######################
   # Background jobs color.
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=6
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=0
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=1
   # Don't show the number of background jobs.
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=false
   # Custom icon.
@@ -562,8 +582,10 @@
 
   #######################[ direnv: direnv status (https://direnv.net/) ]########################
   # Direnv color.
-  typeset -g POWERLEVEL9K_DIRENV_FOREGROUND=3
-  typeset -g POWERLEVEL9K_DIRENV_BACKGROUND=0
+  # CHERI: Original colour 3
+  typeset -g POWERLEVEL9K_DIRENV_FOREGROUND=56
+  # CHERI: Original colour 0
+  typeset -g POWERLEVEL9K_DIRENV_BACKGROUND=176
   # Custom icon.
   # typeset -g POWERLEVEL9K_DIRENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -772,8 +794,10 @@
 
   #[ nix_shell: nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html) ]##
   # Nix shell color.
-  typeset -g POWERLEVEL9K_NIX_SHELL_FOREGROUND=0
-  typeset -g POWERLEVEL9K_NIX_SHELL_BACKGROUND=4
+  # CHERI: original colour was 0
+  typeset -g POWERLEVEL9K_NIX_SHELL_FOREGROUND=253
+  # CHERI: original colour was 4
+  typeset -g POWERLEVEL9K_NIX_SHELL_BACKGROUND=134
 
   # Tip: If you want to see just the icon without "pure" and "impure", uncomment the next line.
   # typeset -g POWERLEVEL9K_NIX_SHELL_CONTENT_EXPANSION=
@@ -1052,8 +1076,10 @@
 
   ##############################[ node_version: node.js version ]###############################
   # Node version color.
-  typeset -g POWERLEVEL9K_NODE_VERSION_FOREGROUND=7
-  typeset -g POWERLEVEL9K_NODE_VERSION_BACKGROUND=2
+  # CHERI: Original colour 7
+  typeset -g POWERLEVEL9K_NODE_VERSION_FOREGROUND=232
+  # CHERI: Original colour 2
+  typeset -g POWERLEVEL9K_NODE_VERSION_BACKGROUND=77
   # Show node version only when in a directory tree containing package.json.
   typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=true
   # Custom icon.
@@ -1061,8 +1087,10 @@
 
   #######################[ go_version: go version (https://golang.org) ]########################
   # Go version color.
-  typeset -g POWERLEVEL9K_GO_VERSION_FOREGROUND=255
-  typeset -g POWERLEVEL9K_GO_VERSION_BACKGROUND=2
+  # CHERI: Original colour 255
+  typeset -g POWERLEVEL9K_GO_VERSION_FOREGROUND=232
+  # CHERI: Original colour 2
+  typeset -g POWERLEVEL9K_GO_VERSION_BACKGROUND=117
   # Show go version only when in a go project subdirectory.
   typeset -g POWERLEVEL9K_GO_VERSION_PROJECT_ONLY=true
   # Custom icon.
@@ -1080,7 +1108,8 @@
   ###############[ dotnet_version: .NET version (https://dotnet.microsoft.com) ]################
   # .NET version color.
   typeset -g POWERLEVEL9K_DOTNET_VERSION_FOREGROUND=7
-  typeset -g POWERLEVEL9K_DOTNET_VERSION_BACKGROUND=5
+  # CHERI: Original colour 5
+  typeset -g POWERLEVEL9K_DOTNET_VERSION_BACKGROUND=99
   # Show .NET version only when in a .NET project subdirectory.
   typeset -g POWERLEVEL9K_DOTNET_VERSION_PROJECT_ONLY=true
   # Custom icon.
@@ -1645,7 +1674,8 @@
   ####################################[ time: current time ]####################################
   # Current time color.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=0
-  typeset -g POWERLEVEL9K_TIME_BACKGROUND=7
+  # CHERI: original colour 7
+  typeset -g POWERLEVEL9K_TIME_BACKGROUND=81
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%I:%M:%S %p}'
   # If set to true, time will update when you hit enter. This way prompts for the past

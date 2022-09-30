@@ -11,6 +11,7 @@ repos:
     hooks:
       - id: shellcheck
         args: ["--severity=error"]
+        exclude: ^.*\.p10k\.zsh$
   - repo: local
     hooks:
       - id: shfmt
